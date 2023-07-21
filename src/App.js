@@ -1,25 +1,23 @@
-import logo from './logo.svg';
-import './App.css';
+import React,{useState} from 'react';
+import AddOrder from './Components/AddOrder';
+import Orders from './Components/Orders';
+
+
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+  const Dummy_orders={}
+  const [orders,setOrders]=useState(Dummy_orders)
+  const AddProductHandler=(order)=>{
+    setOrders(order)
+  }
+
+  return(
+    <React.Fragment>
+       <AddOrder onAdd={AddProductHandler}/>
+       <Orders  pass={orders}/>
+    </React.Fragment>
+  )
+  
 }
 
 export default App;
